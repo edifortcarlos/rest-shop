@@ -9,6 +9,8 @@ const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
 
 
+/* CLOUD CONNECTION
+
 mongoose.connect(
     'mongodb://node-shop-user:' +
     process.env.MONGO_ATLAS_PW +
@@ -19,6 +21,17 @@ mongoose.connect(
 ).catch(error => {
     console.log(error)
 });
+*/
+
+/**
+ * LOCAL CONECTION
+ */
+mongoose.connect('mongodb://localhost/test', {
+        useNewUrlParser: true
+    })
+    .catch(err => {
+        console.log(err);
+    });
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
