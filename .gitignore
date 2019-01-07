@@ -3,4 +3,7 @@
 
 # env
 *nodemon.json
-*.jshintrc
+**.jshintrc
+
+# files
+/uploads/**

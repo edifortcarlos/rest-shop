@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 // Import por the routes
 const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/user');
 
 
 /* CLOUD CONNECTION
@@ -34,6 +35,7 @@ mongoose.connect('mongodb://localhost/test', {
     });
 
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -54,6 +56,7 @@ app.use((req, res, next) => {
 
 app.use('/products', productRoutes);
 app.use('/orders', ordersRoutes);
+app.use('/user', userRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
